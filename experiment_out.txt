@@ -1,0 +1,237 @@
+Loaded 100 questions  (50 MCQ, 50 free-form)
+INFO 05-30 07:31:30 __init__.py:207] Automatically detected platform cuda.
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 05-30 07:31:40 config.py:549] This model supports multiple tasks: {'score', 'reward', 'classify', 'embed', 'generate'}. Defaulting to 'generate'.
+WARNING 05-30 07:31:40 config.py:628] bitsandbytes quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+INFO 05-30 07:31:41 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.BITSANDBYTES, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=bitsandbytes, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":128}, use_cached_outputs=False, 
+INFO 05-30 07:31:42 cuda.py:229] Using Flash Attention backend.
+INFO 05-30 07:31:42 model_runner.py:1110] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+WARNING 05-30 07:31:42 utils.py:78] Qwen3ForCausalLM has no vLLM implementation, falling back to Transformers implementation. Some features may not be supported and performance may not be optimal.
+INFO 05-30 07:31:42 transformers.py:129] Using Transformers backend.
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 05-30 07:31:43 loader.py:1089] Loading weights with BitsAndBytes quantization.  May take a while ...
+INFO 05-30 07:31:43 weight_utils.py:254] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:01<00:02,  1.16s/it]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:02<00:00,  1.40it/s]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:02<00:00,  1.32it/s]
+
+INFO 05-30 07:31:46 model_runner.py:1115] Loading model weights took 2.4940 GB
+INFO 05-30 07:31:51 worker.py:267] Memory profiling takes 4.13 seconds
+INFO 05-30 07:31:51 worker.py:267] the current vLLM instance can use total_gpu_memory (22.03GiB) x gpu_memory_utilization (0.50) = 11.02GiB
+INFO 05-30 07:31:51 worker.py:267] model weights take 2.49GiB; non_torch_memory takes 0.04GiB; PyTorch activation peak memory takes 1.27GiB; the rest of the memory reserved for KV Cache is 7.21GiB.
+INFO 05-30 07:31:51 executor_base.py:111] # cuda blocks: 3282, # CPU blocks: 1820
+INFO 05-30 07:31:51 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 6.41x
+INFO 05-30 07:31:53 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:16<00:00,  1.16it/s]
+INFO 05-30 07:32:09 model_runner.py:1562] Graph capturing finished in 16 secs, took 0.52 GiB
+INFO 05-30 07:32:09 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 23.26 seconds
+Running baseline prompt with 0.4 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                        | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 07:32:43 scheduler.py:1754] Sequence group 99 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1
+Processed prompts:   2%|█▌                                                                             | 2/100 [01:14<57:22, 35.13s/it, est. speed input: 2.51 toks/s, output: 12.22 toks/s]WARNING 05-30 07:33:48 scheduler.py:1754] Sequence group 48 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=51
+Processed prompts:  38%|████████████████████████████▉                                               | 38/100 [13:48<20:39, 19.99s/it, est. speed input: 12.38 toks/s, output: 141.17 toks/s]WARNING 05-30 07:46:13 scheduler.py:1754] Sequence group 62 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=101
+Processed prompts:  57%|██████████████████████████████████████████████████████████▋                                            | 57/100 [25:18<11:35, 16.17s/it, est. speed input: 10.49 toWARNING 05-30 07:57:48 scheduler.py:1754] Sequence group 85 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=151
+Processed prompts:  58%|████████████████████████████████████████████                                | 58/100 [25:59<16:27, 23.51s/it, est. speed input: 10.28 toks/s, output: 139.88 toks/s]                           Processed prompts:  90%|████████████████████████████████████████████████████████████████████████████████████████████▋          | 90/100 [44:37<06:29, 38.99s/it, est. speed input: 10.18 toks/s, output: 135.61 toks/s]WARNING 05-30 08:17:38 scheduler.py:1754] Sequence group 98 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=201
+Processed prompts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [50:58<00:00, 30.58s/it, est. speed input: 9.89 toks/s, output: 141.37 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 20.87it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   23 /   50  (46.00%)
+  Free-form  :   28 /   50  (56.00%)
+  Overall    :   51 /  100  (51.00%)
+==================================================
+Saved 100 records to results/baseline-0.4.jsonl
+Running baseline prompt with 0.6 temperature
+Generating responses for 100 questions...
+Processed prompts:   1%|█                                                                                                        | 1/100 [01:08<1:53:19, 68.68s/it, est. speed input: 1.33 toks/s, output: 7.37 toks/s]WARNING 05-30 08:24:47 scheduler.py:1754] Sequence group 149 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=251
+Processed prompts:  28%|█████████████████████▎                                                      | 28/100 [09:59<1:09:36, 58.00s/it, est. speed input: 8.76 toks/s, output: 94.38 toks/s]Processed prompts:  35%|██████████████████████████▌                                                 | 35/100 [13:26<20:47, 19.19s/it, est. speed input: 10.11 toks/s, output: 136.62 toks/s]WARNING 05-30 08:37:27 scheduler.py:1754] Sequence group 153 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=301
+Processed prompts:  55%|█████████████████████████████████████████▊                                  | 55/100 [25:12<18:17, 24.39s/it, est. speed input: 10.03 toks/s, output: 135.79 toks/s]WARNING 05-30 08:48:35 scheduler.py:1754] Sequence group 173 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=351
+Processed prompts:  71%|██████████████████████████████████████████████████████▋                      | 71/100 [34:59<13:41, 28.33s/it, est. speed input: 9.74 toks/s, output: 135.17 toks/s]WARNING 05-30 08:59:03 scheduler.py:1754] Sequence group 180 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=401
+Processed prompts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [51:38<00:00, 30.98s/it, est. speed input: 9.76 toks/s, output: 141.24 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 21.29it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   26 /   50  (52.00%)
+  Free-form  :   28 /   50  (56.00%)
+  Overall    :   54 /  100  (54.00%)
+==================================================
+Saved 100 records to results/baseline-0.6.jsonl
+Running baseline prompt with 0.8 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 09:15:42 scheduler.py:1754] Sequence group 281 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=451
+Processed prompts:   4%|███▏                                                                           | 4/100 [01:49<35:31, 22.20s/it, est. speed input: 3.77 toks/s, output: 24.59 toks/s]Processed prompts:  18%|█████████████▋                                                              | 18/100 [03:29<12:33,  9.19s/it, est. speed input: 10.52 toks/s, output: 107.56 toks/s]WARNING 05-30 09:18:38 scheduler.py:1754] Sequence group 238 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=501
+Processed prompts:  47%|███████████████████████████████████▋                                        | 47/100 [20:54<39:11, 44.38s/it, est. speed input: 10.04 toks/s, output: 127.16 toks/s]WARNING 05-30 09:36:29 scheduler.py:1754] Sequence group 255 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=551
+Processed prompts:  64%|█████████████████████████████████████████████████▎                           | 64/100 [31:29<31:25, 52.37s/it, est. speed input: 9.40 toks/s, output: 129.80 toks/s]WARNING 05-30 09:46:37 scheduler.py:1754] Sequence group 270 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=601
+Processed prompts:  80%|█████████████████████████████████████████████████████████████▌               | 80/100 [40:29<11:11, 33.60s/it, est. speed input: 9.56 toks/s, output: 134.83 toks/s]WARNING 05-30 09:55:39 scheduler.py:1754] Sequence group 292 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=651
+Processed prompts: 100%|████████████████████████████████████████████████████████████████████████████| 100/100 [52:50<00:00, 31.71s/it, est. speed input: 9.54 toks/s, output: 137.72 toks/s]
+Scoring: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 23.26it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   24 /   50  (48.00%)
+  Free-form  :   26 /   50  (52.00%)
+  Overall    :   50 /  100  (50.00%)
+==================================================
+Saved 100 records to results/baseline-0.8.jsonl
+Running no_persona prompt with 0.4 temperature
+Generating responses for 100 questions...
+Processed prompts:   2%|█▌                                                                             | 2/100 [00:55<37:44, 23.10s/it, est. speed input: 3.18 toks/s, output: 13.98 toks/s]WARNING 05-30 10:09:04 scheduler.py:1754] Sequence group 362 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=701
+Processed prompts:  25%|███████████████████                                                         | 25/100 [09:49<1:09:47, 55.83s/it, est. speed input: 7.24 toks/s, output: 84.10 toks/s]WARNING 05-30 10:18:28 scheduler.py:1754] Sequence group 321 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=751
+Processed prompts:  38%|████████████████████████████▉                                               | 38/100 [15:34<16:22, 15.84s/it, est. speed input: 10.87 toks/s, output: 135.74 toks/s]                           Processed prompts:  49%|██████████████████████████████████████████████████▉                                                     | 49/100 [23:56<26:56, 31.70s/it, est. speed input: 9.24 toks/s, output: 133.49 toks/s]WARNING 05-30 10:32:04 scheduler.py:1754] Sequence group 370 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=801
+Processed prompts:  66%|████████████████████████████████████████████████████████████████████▋                                   | 66/100 [34:26<24:48, 43.79s/it, est. speed input: 8.91 toks/s, output: 131.52 toks/s]WARNING 05-30 10:42:49 scheduler.py:1754] Sequence group 377 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=851
+Processed prompts:  84%|███████████████████████████████████████████████████████████████████████████████████████▎                | 84/100 [41:29<05:18, 19.90s/it, est. speed input: 9.55 toks/s, output: 138.34 toks/s]WARNING 05-30 10:49:34 scheduler.py:1754] Sequence group 398 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=901
+Processed prompts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [54:00<00:00, 32.40s/it, est. speed input: 9.14 toks/s, output: 137.75 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:05<00:00, 18.86it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   26 /   50  (52.00%)
+  Free-form  :   27 /   50  (54.00%)
+  Overall    :   53 /  100  (53.00%)
+==================================================
+Saved 100 records to results/no_persona-0.4.jsonl
+Running no_persona prompt with 0.6 temperature
+Generating responses for 100 questions...
+Processed prompts:   1%|█                                                                                                        | 1/100 [01:07<1:50:34, 67.02s/it, est. speed input: 1.27 toks/s, output: 7.39 toks/s]WARNING 05-30 11:03:14 scheduler.py:1754] Sequence group 458 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=951
+Processed prompts:  34%|███████████████████████████████████▎                                                                    | 34/100 [13:21<22:05, 20.08s/it, est. speed input: 9.33 toks/s, output: 133.61 toks/s]WARNING 05-30 11:15:27 scheduler.py:1754] Sequence group 456 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1001
+Processed prompts:  56%|█████████████████████████████████████████████████████████▋                                             | 56/100 [24:51<12:13, 16.67s/it, est. speed input: 10.19 toks/s, output: 143.69 toks/s]WARNING 05-30 11:26:53 scheduler.py:1754] Sequence group 488 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1051
+Processed prompts:  70%|████████████████████████████████████████████████████████████████████████▊                               | 70/100 [34:24<16:46, 33.54s/it, est. speed input: 9.74 toks/s, output: 139.03 toks/s]WARNING 05-30 11:37:01 scheduler.py:1754] Sequence group 484 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1101
+Processed prompts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [51:13<00:00, 30.74s/it, est. speed input: 9.63 toks/s, output: 141.51 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 29.24it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   27 /   50  (54.00%)
+  Free-form  :   27 /   50  (54.00%)
+  Overall    :   54 /  100  (54.00%)
+==================================================
+Saved 100 records to results/no_persona-0.6.jsonl
+Running no_persona prompt with 0.8 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 11:53:50 scheduler.py:1754] Sequence group 595 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1151
+Processed prompts:   6%|██████▎                                                                                                   | 6/100 [01:52<17:45, 11.34s/it, est. speed input: 5.28 toks/s, output: 38.64 toks/s]WARNING 05-30 11:55:09 scheduler.py:1754] Sequence group 546 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1201
+Processed prompts:  38%|███████████████████████████████████████▏                                                               | 38/100 [14:13<19:41, 19.06s/it, est. speed input: 11.74 toks/s, output: 142.26 toks/s]WARNING 05-30 12:07:47 scheduler.py:1754] Sequence group 561 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1251
+Processed prompts:  58%|███████████████████████████████████████████████████████████▋                                           | 58/100 [25:19<11:55, 17.04s/it, est. speed input: 10.30 toks/s, output: 143.75 toks/s]WARNING 05-30 12:18:55 scheduler.py:1754] Sequence group 580 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1301
+Processed prompts:  77%|███████████████████████████████████████████████████████████████████████████████▎                       | 77/100 [36:17<06:24, 16.70s/it, est. speed input: 10.06 toks/s, output: 139.80 toks/s]WARNING 05-30 12:29:52 scheduler.py:1754] Sequence group 595 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1351
+Processed prompts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [51:58<00:00, 31.19s/it, est. speed input: 9.49 toks/s, output: 140.32 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 29.56it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   28 /   50  (56.00%)
+  Free-form  :   26 /   50  (52.00%)
+  Overall    :   54 /  100  (54.00%)
+==================================================
+Saved 100 records to results/no_persona-0.8.jsonl
+Running aops prompt with 0.4 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 12:46:08 scheduler.py:1754] Sequence group 657 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1401
+Processed prompts:  30%|██████████████████████████████▉                                                                        | 30/100 [11:43<19:43, 16.90s/it, est. speed input: 21.19 toks/s, output: 115.78 toks/s]WARNING 05-30 12:57:06 scheduler.py:1754] Sequence group 644 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1451
+Processed prompts:  54%|███████████████████████████████████████████████████████▌                                               | 54/100 [23:11<15:12, 19.85s/it, est. speed input: 21.06 toks/s, output: 134.36 toks/s]WARNING 05-30 13:08:35 scheduler.py:1754] Sequence group 678 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1501
+Processed prompts:  69%|███████████████████████████████████████████████████████████████████████                                | 69/100 [33:14<25:21, 49.07s/it, est. speed input: 19.47 toks/s, output: 129.14 toks/s]WARNING 05-30 13:19:24 scheduler.py:1754] Sequence group 676 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1551
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [47:12<00:00, 28.32s/it, est. speed input: 20.18 toks/s, output: 142.87 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:05<00:00, 18.13it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   26 /   50  (52.00%)
+  Free-form  :   28 /   50  (56.00%)
+  Overall    :   54 /  100  (54.00%)
+==================================================
+Saved 100 records to results/aops-0.4.jsonl
+Running aops prompt with 0.6 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 13:33:46 scheduler.py:1754] Sequence group 747 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1601
+Processed prompts:  35%|████████████████████████████████████                                                                   | 35/100 [13:05<27:25, 25.31s/it, est. speed input: 24.69 toks/s, output: 131.29 toks/s]WARNING 05-30 13:45:47 scheduler.py:1754] Sequence group 760 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1651
+Processed prompts:  54%|███████████████████████████████████████████████████████▌                                               | 54/100 [23:24<32:51, 42.85s/it, est. speed input: 21.19 toks/s, output: 130.38 toks/s]WARNING 05-30 13:56:56 scheduler.py:1754] Sequence group 764 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1701
+Processed prompts:  72%|██████████████████████████████████████████████████████████████████████████▏                            | 72/100 [35:45<18:48, 40.32s/it, est. speed input: 19.01 toks/s, output: 129.36 toks/s]WARNING 05-30 14:08:37 scheduler.py:1754] Sequence group 785 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1751
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [50:34<00:00, 30.35s/it, est. speed input: 18.83 toks/s, output: 136.61 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 21.05it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   27 /   50  (54.00%)
+  Free-form  :   29 /   50  (58.00%)
+  Overall    :   56 /  100  (56.00%)
+==================================================
+Saved 100 records to results/aops-0.6.jsonl
+Running aops prompt with 0.8 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 14:23:47 scheduler.py:1754] Sequence group 869 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1801
+Processed prompts:  17%|█████████████████▋                                                                                      | 17/100 [04:16<21:13, 15.35s/it, est. speed input: 29.43 toks/s, output: 88.43 toks/s]WARNING 05-30 14:27:43 scheduler.py:1754] Sequence group 830 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1851
+Processed prompts:  48%|█████████████████████████████████████████████████▍                                                     | 48/100 [17:36<18:27, 21.30s/it, est. speed input: 24.46 toks/s, output: 138.42 toks/s]WARNING 05-30 14:41:00 scheduler.py:1754] Sequence group 861 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1901
+Processed prompts:  69%|███████████████████████████████████████████████████████████████████████                                | 69/100 [31:58<25:03, 48.50s/it, est. speed input: 20.22 toks/s, output: 131.75 toks/s]WARNING 05-30 14:55:28 scheduler.py:1754] Sequence group 878 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1951
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [46:51<00:00, 28.11s/it, est. speed input: 20.33 toks/s, output: 144.80 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 20.42it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   28 /   50  (56.00%)
+  Free-form  :   27 /   50  (54.00%)
+  Overall    :   55 /  100  (55.00%)
+==================================================
+Saved 100 records to results/aops-0.8.jsonl
+Running no_persona_aops prompt with 0.4 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 15:10:50 scheduler.py:1754] Sequence group 965 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2001
+Processed prompts:  22%|██████████████████████▋                                                                                | 22/100 [05:21<18:36, 14.31s/it, est. speed input: 30.31 toks/s, output: 106.71 toks/s]WARNING 05-30 15:15:53 scheduler.py:1754] Sequence group 932 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2051
+Processed prompts:  51%|████████████████████████████████████████████████████▌                                                  | 51/100 [21:07<42:17, 51.78s/it, est. speed input: 21.29 toks/s, output: 127.14 toks/s]WARNING 05-30 15:32:16 scheduler.py:1754] Sequence group 956 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2101
+Processed prompts:  62%|███████████████████████████████████████████████████████████████▊                                       | 62/100 [27:23<21:51, 34.51s/it, est. speed input: 20.48 toks/s, output: 132.56 toks/s]WARNING 05-30 15:37:57 scheduler.py:1754] Sequence group 975 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2151
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [47:47<00:00, 28.67s/it, est. speed input: 19.71 toks/s, output: 141.18 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 22.03it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   26 /   50  (52.00%)
+  Free-form  :   28 /   50  (56.00%)
+  Overall    :   54 /  100  (54.00%)
+==================================================
+Saved 100 records to results/no_persona_aops-0.4.jsonl
+Running no_persona_aops prompt with 0.6 temperature
+Generating responses for 100 questions...
+Processed prompts:   0%|                                                                                                                   | 0/100 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 05-30 15:58:42 scheduler.py:1754] Sequence group 1065 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2201
+Processed prompts:  24%|████████████████████████▉                                                                               | 24/100 [07:38<50:08, 39.58s/it, est. speed input: 23.62 toks/s, output: 93.50 toks/s]WARNING 05-30 16:06:54 scheduler.py:1754] Sequence group 1021 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2251
+Processed prompts:  53%|██████████████████████████████████████████████████████▌                                                | 53/100 [23:02<33:48, 43.16s/it, est. speed input: 20.57 toks/s, output: 128.57 toks/s]WARNING 05-30 16:21:25 scheduler.py:1754] Sequence group 1063 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2301
+Processed prompts:  68%|██████████████████████████████████████████████████████████████████████                                 | 68/100 [30:46<18:31, 34.74s/it, est. speed input: 20.33 toks/s, output: 134.44 toks/s]WARNING 05-30 16:29:18 scheduler.py:1754] Sequence group 1078 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2351
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [47:06<00:00, 28.26s/it, est. speed input: 19.99 toks/s, output: 144.81 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 23.69it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   28 /   50  (56.00%)
+  Free-form  :   28 /   50  (56.00%)
+  Overall    :   56 /  100  (56.00%)
+==================================================
+Saved 100 records to results/no_persona_aops-0.6.jsonl
+Running no_persona_aops prompt with 0.8 temperature
+Generating responses for 100 questions...
+Processed prompts:   1%|█                                                                                                        | 1/100 [00:44<1:13:12, 44.36s/it, est. speed input: 8.97 toks/s, output: 6.09 toks/s]WARNING 05-30 16:46:15 scheduler.py:1754] Sequence group 1152 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2401
+Processed prompts:  34%|███████████████████████████████████                                                                    | 34/100 [12:34<25:49, 23.48s/it, est. speed input: 24.44 toks/s, output: 121.53 toks/s]WARNING 05-30 16:57:54 scheduler.py:1754] Sequence group 1152 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2451
+Processed prompts:  54%|███████████████████████████████████████████████████████▌                                               | 54/100 [22:58<22:59, 29.99s/it, est. speed input: 21.09 toks/s, output: 135.00 toks/s]WARNING 05-30 17:08:33 scheduler.py:1754] Sequence group 1172 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2501
+Processed prompts:  71%|█████████████████████████████████████████████████████████████████████████▏                             | 71/100 [34:24<15:33, 32.18s/it, est. speed input: 19.27 toks/s, output: 132.44 toks/s]WARNING 05-30 17:19:44 scheduler.py:1754] Sequence group 1195 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=2551
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [47:12<00:00, 28.33s/it, est. speed input: 19.95 toks/s, output: 142.70 toks/s]
+Scoring: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 28.58it/s]
+Scoring complete. 100 results.
+==================================================
+EVALUATION RESULTS
+==================================================
+  MCQ        :   29 /   50  (58.00%)
+  Free-form  :   26 /   50  (52.00%)
+  Overall    :   55 /  100  (55.00%)
+==================================================
+Saved 100 records to results/no_persona_aops-0.8.jsonl
+[rank0]:[W530 17:32:30.279613592 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
