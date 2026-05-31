@@ -74,7 +74,7 @@ def build_prompts(math_sys_prompt, mcq_sys_prompt, data, tokenizer):
         prompts.append(prompt_text)
     return prompts
 
-def main(data_path, output_path):
+def run_inference(data_path, output_path):
     os.environ["CUDA_VISIBLE_DEVICES"] = GPU_ID
 
     data = [json.loads(line) for line in open(data_path)]
@@ -145,6 +145,6 @@ def main(data_path, output_path):
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
-        main(sys.argv[1], sys.argv[2])
+        run_inference(sys.argv[1], sys.argv[2])
     else:
         print(f"Usage: python run_inference.py <data_path> <output_path>")
