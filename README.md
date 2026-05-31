@@ -51,6 +51,7 @@ This produces a CSV with columns `id` and `response`, sorted by `id`, which is t
 | File | Description |
 |---|---|
 | `run_inference.py` | **Main inference entry point** — loads model, runs inference, outputs submission CSV |
+| `baseline_inference.py` | Baseline inference script — simpler prompts, single sampling config for all question types |
 | `judger.py` | Response scoring logic — extracts `\boxed{}` answers and computes accuracy |
 | `utils.py` | Utilities used by `judger.py` |
 | `main_experiment.py` | Experimental script used to evaluate different prompt strategies during development |
